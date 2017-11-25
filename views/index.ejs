@@ -1,0 +1,36 @@
+<% include partials/head.ejs %>
+  <div class="container">
+  <input type="text" name="name" placeholder="Search by name..." id="input-name" class="form-control mt-4">
+    <div id="output">
+      <!--  User list -->
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const nameInput = document.querySelector('#input-name');
+    const output = document.querySelector('#output');
+    // event
+    nameInput.addEventListener('keyup', () => {
+      let nameValue = nameInput.value;
+      if (nameValue != '') {
+        axios.get(`/search/${nameValue}`).then(res => {
+          if (res.data.length === 0) {
+            output.innerHTML = '<p class="m-3 lead">User not found!</p>';
+          } else {
+            output.innerHTML = '';
+            res.data.map(user => {
+              output.innerHTML += `
+              <div class="user-container">
+                <img src= ${user.image} class="rounded-circle avatar">
+                <p class="user-name"><a href= user/${user._id}>${user.name}</a></p>
+              </div>`;
+            });
+          }
+        }); // end axios request
+      } else {
+        // if input is empty
+        output.innerHTML = '';
+      }
+    });
+  </script>
+<% include partials/footer.ejs %>
