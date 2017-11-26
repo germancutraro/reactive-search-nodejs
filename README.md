@@ -1,6 +1,6 @@
 # Reactive Search NodeJs
 
-Reactive list using node-Express-Axios-Mongodb
+Reactive search using node-Express-Axios-Mongodb
 
 ## Instalation
 
