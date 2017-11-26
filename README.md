@@ -20,7 +20,7 @@ npm start
 ```
 http://localhost:3000/generate
 ```
-Or change 3000 b your port. *This create 100 users*
+Or change 3000 by your port. *This create 100 users*
 
 ## To see all the users:
 ```
